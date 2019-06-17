@@ -1,0 +1,5 @@
+app register --name FileIngestApp --type task --uri file://opt/app/tasks/ingest-1.0.0.BUILD-SNAPSHOT.jar
+app register --name UppercaseApp --type task --uri file://opt/app/tasks/db-uppercase-1.0.0.BUILD-SNAPSHOT.jar
+app register --name ReverseApp --type task --uri file://opt/app/tasks/db-reverse-1.0.0.BUILD-SNAPSHOT.jar
+app register --name LowercaseApp --type task --uri file://opt/app/tasks/db-lowercase-1.0.0.BUILD-SNAPSHOT.jar
+app register --name DeleteApp --type task --uri file://opt/app/tasks/db-delete-1.0.0.BUILD-SNAPSHOT.jar
