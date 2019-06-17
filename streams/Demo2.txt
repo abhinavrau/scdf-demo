@@ -1,0 +1,8 @@
+
+Happy Path
+Import: FileIngestApp && Uppercase: UppercaseApp 'COMPLETED'->Reverse: ReverseApp '*'->Lowercase: LowercaseApp
+
+--increment-instance-enabled=true
+
+Failure Path
+  Import: FileIngestApp --localFilePath=classpath:bf-names.csv && Uppercase: UppercaseApp 'COMPLETED'->Reverse: ReverseApp '*'->Lowercase: LowercaseApp

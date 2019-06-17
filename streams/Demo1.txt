@@ -1,0 +1,58 @@
+
+
+----------- Stream Demo ------------\
+Setup:
+
+- Run Dataflow docker-compose up
+- Run Dataflow Shell
+
+- Create table Demo_CurrencyPositions
+
+CREATE TABLE IF NOT EXISTS Demo_CurrencyPositions (
+    ccypair CHAR(7),
+    rate float,
+    PRIMARY KEY (ccypair)
+);
+
+insert into dataflow.Demo_CurrencyPositions values('eur/usd', 1.12147);
+insert into dataflow.Demo_CurrencyPositions values('gbp/usd', 1.2594);
+insert into dataflow.Demo_CurrencyPositions values('jpy/usd', 108.60);
+
+update dataflow.Demo_CurrencyPositions set rate = 1.320 where ccypair = 'eur/usd';
+
+- Run "gfsh"
+- Run "start locator --name=locator1"
+- Run "start server --name=server1 --groups=group1"
+- Run "create region --name=Positions --groups=group1 --type=REPLICATE"
+- Run "SELECT * from /Positions"
+
+
+Stream 1:
+
+pollPostions: jdbc --query='SELECT ccypair, rate from Demo_CurrencyPositions' --initialization-mode=NEVER --time-unit=SECONDS --fixed-delay=5 | saveToCache:gemfire --host-addresses=host.docker.internal:10334 --json=true --regionName=Positions --keyExpression=payload.getField('ccypair')
+
+Steam 2:
+listenToCache: gemfire --host-addresses=host.docker.internal:10334 --regionName=Positions  | websocket
+
+Open webpage
+
+Update the table
+update dataflow.Demo_CurrencyPositions set rate = 1.320 where ccypair = 'EUR/USD';
+
+Change Transformer to websocket flow
+stream update --name cacheToWeb --properties "app.UpperCase.expression=payload.toUpperCase().concat(' Euro to Dollar')"
+
+Rollback
+stream rollback --name cacheToWeb --releaseVersion 1
+
+- FanIn - Show how we can add other sources (RabbitMQ, MongoDB etc.)
+- Put a named destination and have Fan out
+- Put a tap to show logging or different path
+
+
+- Monitoring
+- Labelling
+- Application Count
+- Named Destinations
+- Fan-in and Fan-out 
+- Tapping
