@@ -29,9 +29,9 @@ update dataflow.Demo_CurrencyPositions set rate = 1.320 where ccypair = 'eur/usd
 
 Stream 1:
 
-pollPostions: jdbc --query='SELECT ccypair, rate from Demo_CurrencyPositions' --initialization-mode=NEVER --time-unit=SECONDS --fixed-delay=5 | saveToCache:gemfire --host-addresses=host.docker.internal:10334 --json=true --regionName=Positions --keyExpression=payload.getField('ccypair')
+jdbc-poller: jdbc --query='SELECT ccypair, rate from Demo_CurrencyPositions' --initialization-mode=NEVER --time-unit=SECONDS --fixed-delay=5 | uppercase: transform --expression=payload.toUpperCase() | saveToCache: gemfire --host-addresses=host.docker.internal:10334 --json=true --regionName=Positions --keyExpression=payload.getField('ccypair')
 
-Steam 2:
+Stream 2:
 listenToCache: gemfire --host-addresses=host.docker.internal:10334 --regionName=Positions  | websocket
 
 Open webpage
