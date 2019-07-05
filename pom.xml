@@ -21,6 +21,7 @@
         <module>db-reverse</module>
         <module>db-lowercase</module>
         <module>db-delete</module>
+        <module>partitioned-batch-job</module>
     </modules>
 
     <build>

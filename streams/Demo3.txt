@@ -1,4 +1,5 @@
 
 ---- Demo #3
+Make sure to register the version of TASK-LAUNCHER-DATAFLOW (1.0.1.RELEASE)
 
-sftp-dataflow --task.launch.request.task-name=Ingest --sftp.remote-dir=remote-dir --sftp.local-dir=/opt/app/tasks/local-files --sftp.factory.host=host.docker.internal --sftp.factory.username=sftpuser --sftp.factory.password=12345  --sftp.factory.allow-unknown-keys=true | task-launcher-dataflow --spring.cloud.dataflow.client.server-uri=http://dataflow-server:9393
+sftp-dataflow --task.launch.request.task-name=fileImportTask --sftp.remote-dir=remote-dir --sftp.local-dir=/opt/app/tasks/local-files --sftp.factory.host=host.docker.internal --sftp.factory.username=sftpuser --sftp.factory.password=12345  --sftp.factory.allow-unknown-keys=true | task-launcher-dataflow --spring.cloud.dataflow.client.server-uri=http://dataflow-server:9393

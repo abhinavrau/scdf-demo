@@ -69,7 +69,7 @@ services:
         done;
         wget -qO- 'http://dataflow-server:9393/apps' --post-data='uri=https://dataflow.spring.io/kafka-maven-latest';
         echo 'Stream apps imported'
-        wget -qO- 'http://dataflow-server:9393/apps' --post-data='uri=http://bit.ly/Dearborn-SR1-task-applications-maven&force=true';
+        wget -qO- 'http://dataflow-server:9393/apps' --post-data='uri=https://dataflow.spring.io/task-maven-latest';
         echo 'Task apps imported'"
 
   skipper-server:
