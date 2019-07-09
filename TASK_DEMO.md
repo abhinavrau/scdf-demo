@@ -74,7 +74,7 @@ task create UppercaseTask --definition "ImportFile: FileIngestApp && Uppercase: 
 
 ### Run the task
 ```bash
-    task launch UppercaseTask --arguments "--increment-instance-enabled=true"
+task launch UppercaseTask --arguments "--increment-instance-enabled=true"
 ```
 
 ## Composed Task that demos Distributed Saga Pattern

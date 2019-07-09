@@ -85,8 +85,7 @@ public class JobConfiguration {
 											 TaskLauncher taskLauncher,
 											 JobExplorer jobExplorer) throws Exception {
 
-		//Resource resource = this.resourceLoader.getResource("maven://com.example:partitioned-batch-job:0.0.1-SNAPSHOT");
-		Resource resource = new DockerResourceLoader().getResource("docker:abhinavrau/partitioned-batch-job:latest");
+		Resource resource = new DockerResourceLoader().getResource("docker:bthelenpivotal/partitioned-batch-job");
 
 		DeployerPartitionHandler partitionHandler =
 				new DeployerPartitionHandler(taskLauncher, jobExplorer, resource, "workerStep");
