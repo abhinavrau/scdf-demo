@@ -15,7 +15,7 @@ Streaming use cases as well as a combination of them
 
 Helpful resources to get some background on this work
 
-##Distributed Sagas
-
-[Distributed Sagas: A Protocol for Coordinating Microservices](https://youtu.be/0UTOLRTwOX0) - Caitie McCaffrey 
-
+* [Distributed Sagas: A Protocol for Coordinating Microservices](https://youtu.be/0UTOLRTwOX0) - Caitie McCaffrey
+* [Spring Cloud Data Flow](https://dataflow.spring.io/) 
+* [Install SCDF Using Helm](https://dataflow.spring.io/docs/installation/kubernetes/helm/)
+* [Batch Remote Partitioning](https://dataflow.spring.io/docs/feature-guides/batch/partitioning/)
